@@ -1,78 +1,45 @@
-/*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
-
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-
-
-#define AS(keycode) &as LS(keycode) keycode
+#include <dt-bindings/zmk/keys.h>
 
 / {
-    chosen {
-      zmk,matrix_transform = &five_column_transform;
-    };
+    keymap {
+        compatible = "zmk,keymap";
 
-    behaviors {
-        as: auto_shift {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping_term_ms = <200>;
-            quick_tap_ms = <0>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
+        QWERTY {
+            bindings = <
+&trans  &kp Q             &kp W           &kp E             &kp R             &kp T        &kp Y      &kp U          &kp I             &kp O           &kp P     &trans
+&trans  &kp A             &mt LEFT_ALT S  &mt LEFT_SHIFT D  &mt LCTRL F       &kp G        &kp H      &mt LCTRL J    &mt LEFT_SHIFT K  &mt LEFT_ALT L  &kp SEMI  &trans
+&trans  &mt LEFT_SHIFT Z  &kp X           &kp C             &kp V             &kp B        &kp N      &kp M          &kp COMMA         &kp DOT         &kp FSLH  &trans
+                                          &lt 3 TAB         &lt 1 LANGUAGE_1  &kp ENTER    &kp SPACE  &kp BACKSPACE  &tog 2
+            >;
+        };
+
+        Nav {
+            bindings = <
+&trans  &bt BT_SEL 3  &trans        &trans          &trans     &trans    &trans      &kp LC(Z)       &kp UP     &kp LC(Y)  &bt BT_SEL 0  &trans
+&trans  &bt BT_SEL 4  &kp LEFT_ALT  &kp LEFT_SHIFT  &kp LCTRL  &trans    &kp END     &kp LEFT_ARROW  &kp DOWN   &kp RIGHT  &bt BT_SEL 1  &trans
+&trans  &trans        &trans        &trans          &trans     &trans    &kp INSERT  &kp LC(C)       &kp LC(V)  &kp LC(X)  &bt BT_SEL 2  &trans
+                                    &trans          &trans     &trans    &trans      &trans          &trans
+            >;
+        };
+
+        Num {
+            bindings = <
+&trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_0      &kp EQUAL            &trans  &trans     &trans          &trans        &trans  &trans
+&trans  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp LEFT_BRACKET  &kp RIGHT_BRACKET    &trans  &kp LCTRL  &kp LEFT_SHIFT  &kp LEFT_ALT  &trans  &trans
+&trans  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &trans            &trans               &trans  &trans     &trans          &trans        &trans  &trans
+                                    &trans        &trans            &trans               &trans  &trans     &to 0
+            >;
+        };
+
+        Function {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &kp F1  &kp F2   &kp F3   &kp F4   &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &kp F5  &kp F6   &kp F7   &kp F8   &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &kp F9  &kp F10  &kp F11  &kp F12  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans   &trans
+            >;
         };
     };
-        keymap {
-                compatible = "zmk,keymap";
-
-                default_layer {
-// -----------------------------------------------------------------------------------------
-// |  Q  |  W  |  E  |  R  |  T  |     |  Y  |  U   |  I   |  O   | P |
-// |  A  |  S  |  D  |  F  |  G  |     |  H  |  J   |  K   |  L   | ' | 
-// |  Z  |  X  |  C  |  V  |  B  |     |  N  |  M   | CTRL | META | . |
-//             | GUI | LWR | SPC |     | ENT | RSE  | BSPC |
-                        display-name = "Base";
-                        bindings = <
-   AS(Q) AS(W) AS(E) AS(R) AS(T)     AS(Y)   AS(U)  AS(I)     AS(O)     AS(P)
-   AS(A) AS(S) AS(D) AS(F) AS(G)     AS(H)   AS(J)  AS(K)     AS(L)     AS(SQT)
-   AS(Z) AS(X) AS(C) AS(V) AS(B)     AS(N)   AS(M)  &kp LCTL  &kp RALT  AS(DOT)
-        &kp LGUI &mo 1 &kp SPACE     AS(RET) &mo 2  &kp BSPC
-                        >;
-                };
-
-                lower_layer {
-// -----------------------------------------------------------------------------------------
-// | !     |  @  |  #  |  $  |  %  |     |  ^  |  &  |  *  |  (  |  )  |
-// | BT1   | BT2 | BT3 | BT4 | BT5 |     | LFT | DWN |  UP | RGT |     |
-// | BTCLR |     |     |     |     |     |     |     |     |     |     |
-//               | GUI |     | SPC |     | ENT | ESC | TAB |
-                        display-name = "Lower";
-                        bindings = <
-   &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT        &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR  &kp RPAR
-   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4     &kp LEFT  &kp DOWN  &kp UP          &kp RIGHT &trans 
-   &bt BT_CLR   &trans       &trans       &trans       &trans           &trans    &trans    &trans          &trans    &trans 
-                             &kp LGUI     &trans       &kp SPACE        AS(RET)   &kp ESC   &kp TAB
-                        >;
-                };
-
-                raise_layer {
-// -----------------------------------------------------------------------------------------
-// | 1! |  2@ |  3# |  4$ |  5% |     |  6^ |  7& |  8* |  9(  |  0)  |
-// | -_ |  =+ |  {  |  [  |  (  |     |  )  |  ]  |  }  |  /?  |  \|  |
-// | `~ |     |     |  ,< |  :  |     |  ;  |  .> | CTRL| META |      |
-//            | GUI | ESC | SPC |     | ENT |     | TAB |
-                        display-name = "Raise";
-                        bindings = <
-
-   AS(N1)    AS(N2)    AS(N3)    AS(N4)    AS(N5)        AS(N6)    AS(N7)    AS(N8)    AS(N9)   AS(N0)
-   AS(MINUS) AS(EQUAL) &kp LBRC  &kp LBKT  &kp LPAR      &kp RPAR  &kp RBKT  &kp RBRC  AS(FSLH) AS(BSLH)
-   AS(GRAVE) &trans    &trans    AS(COMMA) &kp COLON     &kp SEMI  AS(DOT)   &kp LCTRL &kp RALT &trans
-                       &kp LGUI  &kp ESC   &kp SPACE     AS(RET)   &trans    &kp TAB
-                        >;
-                };
-        };
 };
