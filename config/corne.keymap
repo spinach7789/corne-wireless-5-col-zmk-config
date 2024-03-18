@@ -98,7 +98,16 @@
 &trans  &TD_ESC    &kp W           &kp E             &kp R        &kp T        &kp Y      &kp U          &kp I             &kp O           &TD_DASH   &trans
 &trans  &kp A      &hm LEFT_ALT S  &hm LEFT_SHIFT D  &hm LCTRL F  &kp G        &kp H      &hm LCTRL J    &hm LEFT_SHIFT K  &hm LEFT_ALT L  &TD_CHEAT  &trans
 &trans  &TD_SHIFT  &kp X           &kp C             &kp V        &kp B        &kp N      &kp M          &kp COMMA         &kp DOT         &TD_QUOTE  &trans
-                                   &lt 3 TAB         &lt 1 LANG1  &kp SPACE    &kp ENTER  &kp BACKSPACE  &NM 2 2
+                                   &lt 3 TAB         &lt 2 LANG1  &kp SPACE    &kp ENTER  &kp BACKSPACE  &NM 1 1
+            >;
+        };
+
+        Num {
+            bindings = <
+&trans  &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL            &none   &none      &none           &none         &trans  &trans
+&trans  &none         &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp LEFT_BRACKET     &none   &kp LCTRL  &kp LEFT_SHIFT  &kp LEFT_ALT  &trans  &trans
+&trans  &none         &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp RIGHT_BRACKET    &none   &none      &trans          &trans        &trans  &trans
+                                    &trans        &mo 2         &trans               &trans  &trans     &to 0
             >;
         };
 
@@ -108,15 +117,6 @@
 &trans  &bt BT_SEL 4  &kp LEFT_ALT  &kp LEFT_SHIFT  &kp LCTRL           &trans    &kp END     &kp LEFT_ARROW  &kp DOWN   &kp RIGHT  &bt BT_SEL 1  &trans
 &trans  &none         &trans        &trans          &trans              &trans    &kp INSERT  &kp LC(C)       &kp LC(V)  &kp LC(X)  &bt BT_SEL 2  &trans
                                     &trans          &trans              &trans    &trans      &trans          &trans
-            >;
-        };
-
-        Num {
-            bindings = <
-&trans  &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL            &none   &none      &none           &none         &trans  &trans
-&trans  &none         &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp LEFT_BRACKET     &none   &kp LCTRL  &kp LEFT_SHIFT  &kp LEFT_ALT  &trans  &trans
-&trans  &none         &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp RIGHT_BRACKET    &none   &none      &trans          &trans        &trans  &trans
-                                    &trans        &mo 1         &trans               &trans  &trans     &to 0
             >;
         };
 
