@@ -87,7 +87,7 @@
 &trans  &TD_ESC    &kp W           &kp E             &kp R        &kp T        &kp Y      &kp U          &kp I             &kp O           &TD_DASH   &trans
 &trans  &kp A      &hm LEFT_ALT S  &hm LEFT_SHIFT D  &hm LCTRL F  &kp G        &kp H      &hm LCTRL J    &hm LEFT_SHIFT K  &hm LEFT_ALT L  &TD_CHEAT  &trans
 &trans  &TD_SHIFT  &kp X           &kp C             &kp V        &kp B        &kp N      &kp M          &kp COMMA         &kp DOT         &TD_QUOTE  &trans
-                                   &lt 3 TAB         &lt 1 LANG1  &kp SPACE    &kp ENTER  &kp BACKSPACE  &tog 2
+                                   &lt 3 TAB         &lt 1 LANG1  &kp SPACE    &kp ENTER  &kp BACKSPACE  &to 2
             >;
         };
 
@@ -96,7 +96,7 @@
 &trans  &bt BT_SEL 3  &trans        &trans          &kp LC(LEFT_SHIFT)  &trans    &trans      &kp LC(Z)       &kp UP     &kp LC(Y)  &bt BT_SEL 0  &trans
 &trans  &bt BT_SEL 4  &kp LEFT_ALT  &kp LEFT_SHIFT  &kp LCTRL           &trans    &kp END     &kp LEFT_ARROW  &kp DOWN   &kp RIGHT  &bt BT_SEL 1  &trans
 &trans  &trans        &trans        &trans          &trans              &trans    &kp INSERT  &kp LC(C)       &kp LC(V)  &kp LC(X)  &bt BT_SEL 2  &trans
-                                    &trans          &mo 1               &trans    &trans      &trans          &trans
+                                    &trans          &trans              &trans    &trans      &trans          &trans
             >;
         };
 
