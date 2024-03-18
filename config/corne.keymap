@@ -67,7 +67,7 @@
             quick-tap-ms = <200>;
             require-prior-idle-ms = <125>;
             flavor = "tap-preferred";
-            bindings = <&lt>, <&to>;
+            bindings = <&mo>, <&tog>;
         };
     };
 
