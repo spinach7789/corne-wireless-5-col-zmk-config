@@ -21,6 +21,8 @@
             label = "TD_ESC";
             #binding-cells = <0>;
             bindings = <&kp Q>, <&kp ESC>;
+
+            tapping-term-ms = <350>;
         };
 
         TD_DASH: TD_DASH {
@@ -28,6 +30,8 @@
             label = "TD_DASH";
             #binding-cells = <0>;
             bindings = <&kp P>, <&kp MINUS>;
+
+            tapping-term-ms = <350>;
         };
 
         TD_LOCK: TD_LOCK {
@@ -35,6 +39,8 @@
             label = "TD_LOCK";
             #binding-cells = <0>;
             bindings = <&kp SLASH>, <&kp LG(L)>;
+
+            tapping-term-ms = <350>;
         };
 
         TD_CHEAT: TD_CHEAT {
@@ -49,6 +55,8 @@
             label = "TD_SHIFT";
             #binding-cells = <0>;
             bindings = <&kp Z>, <&sk LEFT_SHIFT>;
+
+            tapping-term-ms = <350>;
         };
     };
 
@@ -80,10 +88,10 @@
 
         Nav {
             bindings = <
-&trans  &bt BT_SEL 3  &trans        &trans          &trans     &trans    &trans      &kp LC(Z)       &kp UP     &kp LC(Y)  &bt BT_SEL 0  &trans
-&trans  &bt BT_SEL 4  &kp LEFT_ALT  &kp LEFT_SHIFT  &kp LCTRL  &trans    &kp END     &kp LEFT_ARROW  &kp DOWN   &kp RIGHT  &bt BT_SEL 1  &trans
-&trans  &trans        &trans        &trans          &trans     &trans    &kp INSERT  &kp LC(C)       &kp LC(V)  &kp LC(X)  &bt BT_SEL 2  &trans
-                                    &trans          &trans     &trans    &trans      &trans          &trans
+&trans  &bt BT_SEL 3  &trans        &trans          &kp LC(LEFT_SHIFT)  &trans    &trans      &kp LC(Z)       &kp UP     &kp LC(Y)  &bt BT_SEL 0  &trans
+&trans  &bt BT_SEL 4  &kp LEFT_ALT  &kp LEFT_SHIFT  &kp LCTRL           &trans    &kp END     &kp LEFT_ARROW  &kp DOWN   &kp RIGHT  &bt BT_SEL 1  &trans
+&trans  &trans        &trans        &trans          &trans              &trans    &kp INSERT  &kp LC(C)       &kp LC(V)  &kp LC(X)  &bt BT_SEL 2  &trans
+                                    &trans          &mo 1               &trans    &trans      &trans          &trans
             >;
         };
 
@@ -92,7 +100,7 @@
 &trans  &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL            &trans  &trans     &trans          &trans        &trans  &trans
 &trans  &trans        &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp LEFT_BRACKET     &trans  &kp LCTRL  &kp LEFT_SHIFT  &kp LEFT_ALT  &trans  &trans
 &trans  &trans        &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp RIGHT_BRACKET    &trans  &trans     &trans          &trans        &trans  &trans
-                                    &trans        &sl 1         &trans               &trans  &trans     &to 0
+                                    &trans        &trans        &trans               &trans  &trans     &to 0
             >;
         };
 
