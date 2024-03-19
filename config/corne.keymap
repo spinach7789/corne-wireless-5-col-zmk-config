@@ -38,7 +38,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TD_QUOTE";
             #binding-cells = <0>;
-            bindings = <&kp SLASH>, <&kp SQT>;
+            bindings = <&AS EXCLAMATION SLASH>, <&kp SQT>;
 
             tapping-term-ms = <350>;
         };
@@ -48,13 +48,6 @@
             label = "TD_CHEAT";
             #binding-cells = <0>;
             bindings = <&kp SEMICOLON>, <&kp GRAVE>;
-        };
-
-        TD_SHIFT: TD_SHIFT {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TD_SHIFT";
-            #binding-cells = <0>;
-            bindings = <&kp Z>, <&sk LEFT_SHIFT>;
 
             tapping-term-ms = <350>;
         };
@@ -102,7 +95,7 @@
 
         Com_NUM {
             bindings = <&kp LS(NUMBER_3)>;
-            key-positions = <23 22>;
+            key-positions = <5 6>;
         };
 
         Com_big {
