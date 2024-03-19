@@ -63,11 +63,22 @@
             compatible = "zmk,behavior-hold-tap";
             label = "NM";
             #binding-cells = <2>;
-            tapping-term-ms = <350>;
+            tapping-term-ms = <100>;
             quick-tap-ms = <200>;
-            require-prior-idle-ms = <125>;
-            flavor = "tap-preferred";
+            flavor = "tap-unless-interrupted";
             bindings = <&mo>, <&tog>;
+
+            hold-trigger-key-positions = <16 15 14 19 20 21>;
+        };
+
+        AS: AS {
+            compatible = "zmk,behavior-hold-tap";
+            label = "AS";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <135>;
+            flavor = "tap-preferred";
         };
     };
 
@@ -88,6 +99,45 @@
             bindings = <&kp LG(L)>;
             key-positions = <34 33>;
         };
+
+        Com_NUM {
+            bindings = <&kp LS(NUMBER_3)>;
+            key-positions = <23 22>;
+        };
+
+        Com_big {
+            bindings = <&Big>;
+            key-positions = <17 18>;
+        };
+
+        Com_small {
+            bindings = <&Small>;
+            key-positions = <29 30>;
+        };
+    };
+
+    macros {
+        Big: new_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LEFT_BRACKET &kp RIGHT_BRACKET>,
+                <&macro_wait_time 50>,
+                <&kp LEFT>;
+
+            label = "NEW_MACRO";
+        };
+
+        Small: Small {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS>,
+                <&macro_wait_time 50>,
+                <&kp LEFT>;
+
+            label = "SMALL";
+        };
     };
 
     keymap {
@@ -95,19 +145,19 @@
 
         QWERTY {
             bindings = <
-&trans  &TD_ESC    &kp W           &kp E             &kp R        &kp T        &kp Y      &kp U          &kp I             &kp O           &TD_DASH   &trans
-&trans  &kp A      &hm LEFT_ALT S  &hm LEFT_SHIFT D  &hm LCTRL F  &kp G        &kp H      &hm LCTRL J    &hm LEFT_SHIFT K  &hm LEFT_ALT L  &TD_CHEAT  &trans
-&trans  &TD_SHIFT  &kp X           &kp C             &kp V        &kp B        &kp N      &kp M          &kp COMMA         &kp DOT         &TD_QUOTE  &trans
-                                   &lt 3 TAB         &lt 2 LANG1  &kp SPACE    &kp ENTER  &kp BACKSPACE  &NM 1 1
+&trans  &TD_ESC  &kp W           &kp E             &kp R        &kp T        &kp Y      &kp U          &kp I             &kp O           &TD_DASH   &trans
+&trans  &kp A    &hm LEFT_ALT S  &hm LEFT_SHIFT D  &hm LCTRL F  &kp G        &kp H      &hm LCTRL J    &hm LEFT_SHIFT K  &hm LEFT_ALT L  &TD_CHEAT  &trans
+&trans  &kp Z    &kp X           &kp C             &kp V        &kp B        &kp N      &kp M          &kp COMMA         &kp DOT         &TD_QUOTE  &trans
+                                 &lt 3 TAB         &lt 2 LANG1  &kp SPACE    &kp ENTER  &kp BACKSPACE  &NM 1 1
             >;
         };
 
         Num {
             bindings = <
-&trans  &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL            &none   &none      &none           &none         &trans  &trans
-&trans  &none         &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp LEFT_BRACKET     &none   &kp LCTRL  &kp LEFT_SHIFT  &kp LEFT_ALT  &trans  &trans
-&trans  &none         &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp RIGHT_BRACKET    &none   &none      &trans          &trans        &trans  &trans
-                                    &trans        &mo 2         &trans               &trans  &trans     &to 0
+&trans  &kp ESC  &AS LS(NUMBER_1) NUMBER_1  &AS LS(NUMBER_2) NUMBER_2  &AS LS(NUMBER_3) NUMBER_3  &AS LS(EQUAL) EQUAL                    &none   &none      &none           &none         &trans  &trans
+&trans  &kp TAB  &AS LS(NUMBER_4) NUMBER_4  &AS LS(NUMBER_5) NUMBER_5  &AS LS(NUMBER_6) NUMBER_6  &AS LS(LEFT_BRACKET) LEFT_BRACKET      &none   &kp LCTRL  &kp LEFT_SHIFT  &kp LEFT_ALT  &trans  &trans
+&trans  &none    &AS LS(NUMBER_7) NUMBER_7  &AS LS(NUMBER_8) NUMBER_8  &AS LS(NUMBER_9) NUMBER_9  &AS LS(RIGHT_BRACKET) RIGHT_BRACKET    &none   &none      &trans          &trans        &trans  &trans
+                                            &trans                     &mo 2                      &trans                                 &trans  &trans     &to 0
             >;
         };
 
