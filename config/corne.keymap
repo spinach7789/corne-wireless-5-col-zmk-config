@@ -58,7 +58,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <100>;
             quick-tap-ms = <200>;
-            flavor = "tap-unless-interrupted";
+            flavor = "hold-preferred";
             bindings = <&mo>, <&tog>;
 
             hold-trigger-key-positions = <16 15 14 19 20 21>;
@@ -131,6 +131,13 @@
 
             label = "SMALL";
         };
+
+        StopWork: StopWork {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp MINUS &kp SPACE &kp R &kp O &kp D &kp L &kp S &kp SPACE &kp T &kp K &kp D &kp B>;
+            label = "STOPWORK";
+        };
     };
 
     keymap {
@@ -138,18 +145,18 @@
 
         QWERTY {
             bindings = <
-&trans  &TD_ESC  &kp W           &kp E             &kp R        &kp T        &kp Y      &kp U          &kp I             &kp O           &TD_DASH   &trans
-&trans  &kp A    &hm LEFT_ALT S  &hm LEFT_SHIFT D  &hm LCTRL F  &kp G        &kp H      &hm LCTRL J    &hm LEFT_SHIFT K  &hm LEFT_ALT L  &TD_CHEAT  &trans
-&trans  &kp Z    &kp X           &kp C             &kp V        &kp B        &kp N      &kp M          &kp COMMA         &kp DOT         &TD_QUOTE  &trans
-                                 &lt 3 TAB         &lt 2 LANG1  &kp SPACE    &kp ENTER  &kp BACKSPACE  &NM 1 1
+&trans  &TD_ESC           &kp W           &kp E             &kp R        &kp T        &kp Y      &kp U          &kp I             &kp O           &TD_DASH   &trans
+&trans  &kp A             &hm LEFT_ALT S  &hm LEFT_SHIFT D  &hm LCTRL F  &kp G        &kp H      &hm LCTRL J    &hm LEFT_SHIFT K  &hm LEFT_ALT L  &TD_CHEAT  &trans
+&trans  &hm LEFT_SHIFT Z  &kp X           &kp C             &kp V        &kp B        &kp N      &kp M          &kp COMMA         &kp DOT         &TD_QUOTE  &trans
+                                          &lt 3 TAB         &lt 2 LANG1  &kp SPACE    &kp ENTER  &kp BACKSPACE  &NM 1 1
             >;
         };
 
         Num {
             bindings = <
-&trans  &kp ESC  &AS LS(NUMBER_1) NUMBER_1  &AS LS(NUMBER_2) NUMBER_2  &AS LS(NUMBER_3) NUMBER_3  &AS LS(EQUAL) EQUAL                    &none   &none      &none           &none         &trans  &trans
-&trans  &kp TAB  &AS LS(NUMBER_4) NUMBER_4  &AS LS(NUMBER_5) NUMBER_5  &AS LS(NUMBER_6) NUMBER_6  &AS LS(LEFT_BRACKET) LEFT_BRACKET      &none   &kp LCTRL  &kp LEFT_SHIFT  &kp LEFT_ALT  &trans  &trans
-&trans  &none    &AS LS(NUMBER_7) NUMBER_7  &AS LS(NUMBER_8) NUMBER_8  &AS LS(NUMBER_9) NUMBER_9  &AS LS(RIGHT_BRACKET) RIGHT_BRACKET    &none   &none      &trans          &trans        &trans  &trans
+&trans  &kp ESC  &AS LS(NUMBER_1) NUMBER_1  &AS LS(NUMBER_2) NUMBER_2  &AS LS(NUMBER_3) NUMBER_3  &AS LS(EQUAL) EQUAL                    &none   &none      &none   &none         &trans  &trans
+&trans  &kp TAB  &AS LS(NUMBER_4) NUMBER_4  &AS LS(NUMBER_5) NUMBER_5  &AS LS(NUMBER_6) NUMBER_6  &AS LS(LEFT_BRACKET) LEFT_BRACKET      &none   &kp LCTRL  &to 0   &kp LEFT_ALT  &trans  &trans
+&trans  &none    &AS LS(NUMBER_7) NUMBER_7  &AS LS(NUMBER_8) NUMBER_8  &AS LS(NUMBER_9) NUMBER_9  &AS LS(RIGHT_BRACKET) RIGHT_BRACKET    &none   &none      &trans  &trans        &trans  &trans
                                             &AS LS(NUMBER_0) NUMBER_0  &mo 2                      &trans                                 &trans  &trans     &to 0
             >;
         };
@@ -165,10 +172,10 @@
 
         Function {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &kp F1  &kp F2   &kp F3   &kp F4   &kp SQT     &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &kp F5  &kp F6   &kp F7   &kp F8   &kp INSERT  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &kp F9  &kp F10  &kp F11  &kp F12  &kp DELETE  &trans
-                        &trans  &trans  &trans    &trans  &trans   &trans
+&trans  &trans  &trans  &trans  &trans     &trans    &kp F1  &kp F2   &kp F3   &kp F4   &kp SQT     &trans
+&trans  &trans  &trans  &trans  &StopWork  &trans    &kp F5  &kp F6   &kp F7   &kp F8   &kp INSERT  &trans
+&trans  &trans  &trans  &trans  &trans     &trans    &kp F9  &kp F10  &kp F11  &kp F12  &kp DELETE  &trans
+                        &trans  &trans     &trans    &trans  &trans   &trans
             >;
         };
     };
