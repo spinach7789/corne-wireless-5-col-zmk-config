@@ -56,8 +56,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "NM";
             #binding-cells = <2>;
-            tapping-term-ms = <100>;
-            quick-tap-ms = <200>;
+            tapping-term-ms = <200>;
             flavor = "balanced";
             bindings = <&mo>, <&tog>;
 
@@ -142,14 +141,18 @@
         StopWork: StopWork {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none &kp MINUS &kp SPACE &kp R &kp O &kp D &kp L &kp S &kp SPACE &kp T &kp K &kp D &kp B>;
+            bindings =
+                <&none &kp MINUS &kp SPACE &kp R &kp O &kp D &kp L &kp S &kp SPACE &kp T &kp K &kp D &kp B>,
+                <&macro_press>;
+
             label = "STOPWORK";
         };
 
         AutoSwitch: AutoSwitch {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp LEFT_SHIFT>;
+            bindings = <&to 0>, <&macro_press>, <&kp LEFT_SHIFT>;
+
             label = "AUTOSWITCH";
         };
     };
