@@ -73,6 +73,13 @@
             tapping-term-ms = <135>;
             flavor = "tap-preferred";
         };
+
+        TD_Equal: TD_Equal {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_EQUAL";
+            #binding-cells = <0>;
+            bindings = <&kp A>, <&kp EQUAL>;
+        };
     };
 
     combos {
@@ -153,7 +160,7 @@
         QWERTY {
             bindings = <
 &trans  &TD_ESC           &kp W           &kp E             &kp R        &kp T        &kp Y      &kp U          &kp I             &kp O           &TD_DASH   &trans
-&trans  &kp A             &hm LEFT_ALT S  &hm LEFT_SHIFT D  &hm LCTRL F  &kp G        &kp H      &hm LCTRL J    &hm LEFT_SHIFT K  &hm LEFT_ALT L  &TD_CHEAT  &trans
+&trans  &TD_Equal         &hm LEFT_ALT S  &hm LEFT_SHIFT D  &hm LCTRL F  &kp G        &kp H      &hm LCTRL J    &hm LEFT_SHIFT K  &hm LEFT_ALT L  &TD_CHEAT  &trans
 &trans  &hm LEFT_SHIFT Z  &kp X           &kp C             &kp V        &kp B        &kp N      &kp M          &kp COMMA         &kp DOT         &TD_QUOTE  &trans
                                           &lt 3 TAB         &lt 2 LANG1  &kp SPACE    &kp ENTER  &kp BACKSPACE  &NM 1 1
             >;
